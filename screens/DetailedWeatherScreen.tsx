@@ -23,7 +23,7 @@ export default function DetailedWeatherScreen({ navigation, route }: DetailedWea
             </TouchableOpacity>
             <View style={styles.mainDataContainer}>
                 <View style={styles.locationContainer}>
-                    <Octicons name="location" size={28} color="black" />
+                    <Octicons name="location" size={28} color="#404142" />
                     <Observer>
                         {
                             () => <Text style={styles.locationName}>{globalInfo.fetchedData.city.name}</Text>
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     locationName: {
         fontSize: 30,
         marginLeft: 10,
+        color: "#404142",
     },
     locationContainer: {
         marginTop: 100,
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
     mainTemp: {
         fontSize: 60,
         marginRight: 10,
+        color: "#404142",
     },
     pageCloseContainer: {
         position: "absolute",
@@ -92,10 +94,12 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     weatherDescription: {
-        fontSize: 25
+        fontSize: 25,
+        color: "#404142",
     },
     currentDate: {
         marginLeft: 10,
         fontWeight: "bold",
+        color: "#404142",
     },
 })

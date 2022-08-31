@@ -1,13 +1,9 @@
-import { LocationObject } from "expo-location";
 import { 
     makeObservable,
     computed ,
     observable, 
-    flow
+    action
 } from "mobx"
-import { API_KEY, LANG, UNITS } from "../consts/openWeather";
-
-
 class GlobalInfo {
    
     data:any = [];
@@ -16,17 +12,13 @@ class GlobalInfo {
         makeObservable(this,{
             data: observable,
             fetchedData:computed,
-            getDailyForecast: flow,
+            setDailyForecast: action,
         })
     }
 
-   getDailyForecast(currentLocation:LocationObject|null){
-    const URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + currentLocation?.coords.latitude + "&lon=" + currentLocation?.coords.longitude + "&appid=" + API_KEY + "&units=" + UNITS + "&lang=" + LANG;
-    fetch(URL).then(res => res.json())
-        .then((data) => {
-            this.data = data;
-        })
-    };
+    setDailyForecast(data:any){
+        return this.data = data
+    }
     
     get fetchedData() {
         return this.data;

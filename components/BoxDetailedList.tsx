@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     },
     textAligement: {
         textAlign: "center",
+        color: "#404142",
     },
     value: {
         fontSize: 25,

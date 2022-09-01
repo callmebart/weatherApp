@@ -5,6 +5,7 @@
  - https://dribbble.com/shots/7528647-Mobile-Wallpaper
  <br/>
  <br/>
+ 
  ## Run in terminal 
  - git clone https://github.com/callmebart/weatherApp.git
  - yarn install 

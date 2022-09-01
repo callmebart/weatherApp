@@ -8,7 +8,7 @@ import getRecalculatedValue from "../utils/getRecalculatedValue";
 
 export default function BoxDetailedList({ item }: any) {
 
-    const unit = getRecalculatedValue(item);
+    const unit = getRecalculatedValue(item.main.feels_like);
 
     return (
 

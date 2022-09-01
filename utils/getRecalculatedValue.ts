@@ -1,11 +1,11 @@
 import { CELSIUS_UNIT } from "../consts/symbols"
 import globalStore from "../store/GlobalSettings"
 
-export default function getRecalculatedValue(item:any) {
+export default function getRecalculatedValue(temp:number) {
   if(globalStore.unit === CELSIUS_UNIT){
-    return Math.floor(item.main.temp_max);
+    return Math.floor(temp);
   };
      
-  return Math.floor(item.main.temp_max) * 9 / 5 + 32;
+  return Math.floor(temp) * 9 / 5 + 32;
    
 }

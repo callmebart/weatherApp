@@ -15,7 +15,7 @@ interface Props {
 export default function WeeklyListElement({ item, index }: Props) {
 
     const elementDate = getDayName(item.dt_txt, index);
-    const unit = getRecalculatedValue(item);
+    const unit = getRecalculatedValue(item.main.temp_max);
     const navigation = useNavigation<any>();
 
     return (

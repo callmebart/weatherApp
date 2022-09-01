@@ -13,7 +13,7 @@ import { Octicons } from '@expo/vector-icons';
 export default function DetailedWeatherScreen({ navigation, route }: DetailedWeatherScreenScreenRouteProp) {
 
     const item = route.params.item;
-    const currentTemp = getRecalculatedValue(item);
+    const currentTemp = getRecalculatedValue(item.main.temp_max);
     const currentDate = new Date(item.dt_txt.slice(0, 10)).toDateString();
 
     return (

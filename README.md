@@ -1,5 +1,8 @@
  # weatherApp
  Simple Weather Conditions Mobile app for Android and IOS devices  
+ Graphics Made by Yihsuan Lu on Dribble
+ - https://dribbble.com/shots/7572399-Mobile-Wallpaper-2/attachments/365279?mode=media
+ - https://dribbble.com/shots/7528647-Mobile-Wallpaper
  <br/>
  <br/>
  ## Run in terminal 

@@ -1,5 +1,7 @@
 ﻿# weatherApp
- 
+ Simple Weather Conditions Mobile app for Android and IOS devices  
+ <br/>
+ <br/>
  ## Run in terminal 
  - git clone https://github.com/callmebart/weatherApp.git
  - yarn install 
@@ -8,7 +10,6 @@
  - scan QR code displayed in terminal
  <br/>
  <br/>
- <br/>
  
- ## About 
- Simple Weather Conditions Mobile app for Android and IOS devices  
+ ## PreView
+

@@ -1,5 +1,5 @@
  # weatherApp
- Simple Weather Conditions Mobile app for Android and IOS devices  
+ Simple Weather Conditions Mobile app for Android(tested on Android 11) and IOS(not tested) devices  
  Graphics Made by Yihsuan Lu on Dribble
  - https://dribbble.com/shots/7572399-Mobile-Wallpaper-2/attachments/365279?mode=media
  - https://dribbble.com/shots/7528647-Mobile-Wallpaper

@@ -12,6 +12,6 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
         alignItems: "center",
-        height: Dimensions.get('window').height - 150,
+        height: Dimensions.get('window').height - 200,
     },
 })

@@ -16,6 +16,8 @@ import { API_KEY, LANG, UNITS } from "../consts/openWeather";
 import getRecalculatedValue from "../utils/getRecalculatedValue";
 import globalStore from "../store/GlobalSettings";
 import { Observer } from "mobx-react-lite";
+import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
+import { Octicons } from '@expo/vector-icons';
 
 export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
 
@@ -60,7 +62,7 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
         fetch(URL).then(res => res.json())
             .then((data) => {
                 setCurrentWeather(data);
-            })
+            });
     };
 
 
@@ -68,13 +70,16 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
         return <WeeklyListElement item={item} index={index} key={index} />
     });
 
-    const currentTemp = getRecalculatedValue(currentWeather?.main.feels_like || null)
+    const currentTemp = getRecalculatedValue(currentWeather?.main.feels_like || null);
+    const currentConditions = capitalizeFirstLetter(currentWeather?.weather[0].description || null)
+    const currentDate = new Date().toLocaleString('default', { month: 'long' }).slice(0, 11);
+
 
     useEffect(() => {
         if (isLoading && currentWeather?.main && dailyForecastData) {
             setIsLoading(false);
         }
-    }, [isLoading, currentWeather, dailyForecastData])
+    }, [isLoading, currentWeather, dailyForecastData]);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -94,8 +99,21 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
                                 () => <Text style={styles.currentTemp}>{currentTemp} {globalStore.unit}</Text>
                             }
                         </Observer>
+                        <View style={styles.breakLine} />
+                        <Text style={styles.currentConditions}>{currentConditions}</Text>
                     </View>
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1.1 }}>
+                        <View style={styles.locationContainer}>
+                            <Octicons name="location" size={38} color="#404142" />
+                            <View>
+                                <Observer>
+                                    {
+                                        () => <Text style={styles.locationName}>{globalInfo.fetchedData.city.name}</Text>
+                                    }
+                                </Observer>
+                                <Text style={styles.currentDate}>{currentDate}</Text>
+                            </View>
+                        </View>
                         {dailyForecastElemenst}
                     </View>
                 </View>
@@ -127,9 +145,37 @@ const styles = StyleSheet.create({
     currentTemp: {
         fontSize: 70,
         alignSelf: "center",
+        color: "#404142",
     },
     currentWeatherContainer: {
         flex: 1,
         width: "100%",
+    },
+    breakLine: {
+        height: 1,
+        backgroundColor: "#404142",
+        opacity: 0.1,
+        width: 200,
+        alignSelf: "center",
+        marginVertical: 8,
+    },
+    currentConditions: {
+        fontSize: 20,
+        alignSelf: "center",
+        color: "#404142",
+    },
+    locationName: {
+        fontSize: 18,
+        marginLeft: 10,
+        color: "#404142",
+    },
+    locationContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    currentDate: {
+        fontSize: 14,
+        marginLeft: 10,
+        color: "#404142",
     },
 })

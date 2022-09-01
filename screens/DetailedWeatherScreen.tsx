@@ -26,12 +26,12 @@ export default function DetailedWeatherScreen({ navigation, route }: DetailedWea
         const time = item.dt_txt.slice(10, 16);
         return (
             <View style={styles.hourlyBoxContainer}>
-                <Text>{time}</Text>
+                <Text style={styles.scrollViewElementText}>{time}</Text>
                 <Image
                     source={{ uri: `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png` } as ImageSourcePropType}
                     style={styles.icon}
                 />
-                <Text>{temp} {globalStore.unit}</Text>
+                <Text style={styles.scrollViewElementText}>{temp} {globalStore.unit}</Text>
             </View>
         )
     })
@@ -155,5 +155,8 @@ const styles = StyleSheet.create({
         width: windowWidth - 40,
         alignSelf: "center",
         marginVertical: 8,
+    },
+    scrollViewElementText: {
+        color: "#404142",
     },
 })

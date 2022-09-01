@@ -2,13 +2,15 @@ import { View, Text, StyleSheet } from 'react-native'
 import globalStore from "../store/GlobalSettings";
 import TextTicker from 'react-native-text-ticker';
 import { detailedContent } from "../consts/en";
-import { Observer } from "mobx-react-lite";
-import { CELSIUS_UNIT } from "../consts/symbols";
 import getRecalculatedValue from "../utils/getRecalculatedValue";
+import { useTheme } from "../hooks/ThemeProvider";
+import { themeMode } from "../utils/themeMode";
 
 export default function BoxDetailedList({ item }: any) {
 
     const unit = getRecalculatedValue(item.main.feels_like);
+    const { theme } = useTheme();
+    const styles = useStyles(themeMode[theme].color);
 
     return (
 
@@ -16,7 +18,7 @@ export default function BoxDetailedList({ item }: any) {
             <View style={styles.row}>
                 <View style={styles.inRowBox}>
                     <TextTicker
-                        style={[styles.valueTitle]}
+                        style={[styles.valueTitle, themeMode[theme]]}
                         duration={4000}
                         loop
                         scroll
@@ -70,14 +72,14 @@ export default function BoxDetailedList({ item }: any) {
     )
 }
 
-const styles = StyleSheet.create({
+const useStyles = (color: string) => StyleSheet.create({
     row: {
         flexDirection: "row",
         justifyContent: "space-between",
     },
     textAligement: {
         textAlign: "center",
-        color: "#404142",
+        color: color,
     },
     value: {
         fontSize: 25,

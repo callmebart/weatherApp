@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native'
 import { HomeScreenScreenRouteProp } from '../navigation/types'
 import * as Location from 'expo-location';
 import { PermissionStatus } from "../types/enums";
 import { LocationObject } from "expo-location";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from '@expo/vector-icons';
 import AbsoluteLoader from "../components/AbsoluteLoader";
 import getUniqueWeatherData from "../utils/getUniqueWeatherData";
@@ -18,6 +17,9 @@ import globalStore from "../store/GlobalSettings";
 import { Observer } from "mobx-react-lite";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 import { Octicons } from '@expo/vector-icons';
+import getBackgroundImage from "../utils/getBackgroundImage";
+import { useTheme } from "../hooks/ThemeProvider";
+import { themeMode } from "../utils/themeMode";
 
 export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
 
@@ -25,7 +27,10 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [dailyForecastData, setDailyForecastData] = useState<any>();
     const [currentWeather, setCurrentWeather] = useState<any>()
+
+    const backgroudImageSource = getBackgroundImage();
     const isFocused = useIsFocused();
+    const { theme, setTheme } = useTheme();
 
     useEffect(() => {
         (async () => {
@@ -82,56 +87,58 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
     }, [isLoading, currentWeather, dailyForecastData]);
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <ImageBackground source={backgroudImageSource} resizeMode="cover" style={styles.image}>
+                <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")} style={styles.burgerMenu}>
+                    <Feather name="menu" size={30} color={themeMode[theme].color} />
+                </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")} style={styles.burgerMenu}>
-                <Feather name="menu" size={30} color="black" />
-            </TouchableOpacity>
-
-            <Spacer spacingValue={6} />
-            {isLoading
-                ? <AbsoluteLoader />
-                : <View style={styles.dailyForecast}>
-                    <View style={styles.currentWeatherContainer}>
-                        <Spacer spacingValue={10} />
-                        <Observer>
-                            {
-                                () => <Text style={styles.currentTemp}>{currentTemp} {globalStore.unit}</Text>
-                            }
-                        </Observer>
-                        <View style={styles.breakLine} />
-                        <Text style={styles.currentConditions}>{currentConditions}</Text>
-                    </View>
-                    <View style={{ flex: 1.1 }}>
-                        <View style={styles.locationContainer}>
-                            <Octicons name="location" size={38} color="#404142" />
-                            <View>
-                                <Observer>
-                                    {
-                                        () => <Text style={styles.locationName}>{globalInfo.fetchedData.city.name}</Text>
-                                    }
-                                </Observer>
-                                <Text style={styles.currentDate}>{currentDate}</Text>
-                            </View>
+                <Spacer spacingValue={6} />
+                {isLoading
+                    ? <AbsoluteLoader />
+                    : <View style={styles.dailyForecast}>
+                        <View style={styles.currentWeatherContainer}>
+                            <Spacer spacingValue={10} />
+                            <Observer>
+                                {
+                                    () => <Text style={[styles.currentTemp, themeMode[theme]]}>{currentTemp} {globalStore.unit}</Text>
+                                }
+                            </Observer>
+                            <View style={styles.breakLine} />
+                            <Text style={[styles.currentConditions, themeMode[theme]]}>{currentConditions}</Text>
                         </View>
-                        {dailyForecastElemenst}
+                        <View style={{ flex: 1.1 }}>
+                            <View style={styles.locationContainer}>
+                                <Octicons name="location" size={38} color={themeMode[theme].color} />
+                                <View>
+                                    <Observer>
+                                        {
+                                            () => <Text style={[styles.locationName, themeMode[theme]]}>{globalInfo.fetchedData.city.name}</Text>
+                                        }
+                                    </Observer>
+                                    <Text style={[styles.currentDate, themeMode[theme]]}>{currentDate}</Text>
+                                </View>
+                            </View>
+                            {dailyForecastElemenst}
+                        </View>
                     </View>
-                </View>
-            }
-
-        </SafeAreaView>
+                }
+            </ImageBackground>
+        </View>
     );
 };
 
-
 const styles = StyleSheet.create({
+    image: {
+        flex: 1,
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+    },
     container: {
         flex: 1,
         width: "100%",
-        paddingHorizontal: 30,
         backgroundColor: "white",
-        alignItems: "center",
-        justifyContent: "center",
     },
     burgerMenu: {
         position: "absolute",
@@ -145,7 +152,6 @@ const styles = StyleSheet.create({
     currentTemp: {
         fontSize: 70,
         alignSelf: "center",
-        color: "#404142",
     },
     currentWeatherContainer: {
         flex: 1,
@@ -162,12 +168,10 @@ const styles = StyleSheet.create({
     currentConditions: {
         fontSize: 20,
         alignSelf: "center",
-        color: "#404142",
     },
     locationName: {
         fontSize: 18,
         marginLeft: 10,
-        color: "#404142",
     },
     locationContainer: {
         flexDirection: "row",
@@ -176,6 +180,5 @@ const styles = StyleSheet.create({
     currentDate: {
         fontSize: 14,
         marginLeft: 10,
-        color: "#404142",
     },
 })

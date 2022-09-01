@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, ImageSourcePropType, Image, Dimensions } from 'react-native'
 import BoxDetailedList from "../components/BoxDetailedList";
 import { DetailedWeatherScreenScreenRouteProp } from "../navigation/types"
 import { Feather } from '@expo/vector-icons';
@@ -8,7 +8,10 @@ import globalInfo from "../store/GlobalInfo";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 import { Observer } from "mobx-react-lite";
 import { Octicons } from '@expo/vector-icons';
+import hourlyForecast from "../store/HourlyForecast";
+import Spacer from "../components/Spacer";
 
+const windowWidth = Dimensions.get("window").width;
 
 export default function DetailedWeatherScreen({ navigation, route }: DetailedWeatherScreenScreenRouteProp) {
 
@@ -16,10 +19,27 @@ export default function DetailedWeatherScreen({ navigation, route }: DetailedWea
     const currentTemp = getRecalculatedValue(item.main.temp_max);
     const currentDate = new Date(item.dt_txt.slice(0, 10)).toDateString();
 
+    const hourlyForecastData = hourlyForecast.grouppedForecastData[item.dt_txt.slice(0, 10)];
+
+    const hourlyForecastList = hourlyForecastData.map((item: any) => {
+        const temp = getRecalculatedValue(item.main.feels_like);
+        const time = item.dt_txt.slice(10, 16);
+        return (
+            <View style={styles.hourlyBoxContainer}>
+                <Text>{time}</Text>
+                <Image
+                    source={{ uri: `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png` } as ImageSourcePropType}
+                    style={styles.icon}
+                />
+                <Text>{temp} {globalStore.unit}</Text>
+            </View>
+        )
+    })
+
     return (
         <SafeAreaView style={styles.container}>
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.pageCloseContainer}>
-                <Feather name="x" size={40} color="#404142" />
+                <Feather name="x" size={35} color="#404142" />
             </TouchableOpacity>
             <View style={styles.mainDataContainer}>
                 <View style={styles.locationContainer}>
@@ -41,7 +61,15 @@ export default function DetailedWeatherScreen({ navigation, route }: DetailedWea
                     <Text style={styles.currentDate}>{currentDate}</Text>
                 </View>
             </View>
-            <BoxDetailedList item={item} />
+            <ScrollView style={styles.flexOne}>
+                <ScrollView horizontal style={styles.horizontalScrollView}>
+                    {hourlyForecastList}
+                </ScrollView>
+                <View style={styles.breakLine} />
+                <BoxDetailedList item={item} />
+                <Spacer spacingValue={20} />
+            </ScrollView>
+
         </SafeAreaView >
     )
 }
@@ -52,8 +80,11 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         alignItems: "center",
     },
+    flexOne: {
+        flex: 1,
+    },
     mainDataContainer: {
-        flex: 1.5,
+        flex: 1.2,
         width: "100%",
     },
     locationName: {
@@ -84,7 +115,7 @@ const styles = StyleSheet.create({
     },
     rowBoxContainer: {
         position: "absolute",
-        bottom: 40,
+        bottom: 20,
         left: 20,
     },
     inRowBox: {
@@ -101,5 +132,28 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontWeight: "bold",
         color: "#404142",
+    },
+    hourlyBoxContainer: {
+        height: 100,
+        width: 60,
+        margin: 5,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    icon: {
+        width: 40,
+        height: 40,
+    },
+    horizontalScrollView: {
+        width: windowWidth - 20,
+        alignSelf: "center",
+    },
+    breakLine: {
+        height: 1,
+        backgroundColor: "#404142",
+        opacity: 0.1,
+        width: windowWidth - 40,
+        alignSelf: "center",
+        marginVertical: 8,
     },
 })

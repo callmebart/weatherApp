@@ -42,7 +42,6 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
         if (currentLocation) {
             getDailyForecast();
             getCurrentWeather();
-            setIsLoading(false);
         }
     }, [currentLocation]);
 
@@ -69,31 +68,39 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
         return <WeeklyListElement item={item} index={index} key={index} />
     });
 
+    const currentTemp = getRecalculatedValue(currentWeather?.main.feels_like || null)
+
+    useEffect(() => {
+        if (isLoading && currentWeather?.main && dailyForecastData) {
+            setIsLoading(false);
+        }
+    }, [isLoading, currentWeather, dailyForecastData])
 
     return (
         <SafeAreaView style={styles.container}>
-            <View>
-                <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")} style={styles.burgerMenu}>
-                    <Feather name="menu" size={30} color="black" />
-                </TouchableOpacity>
-                <Spacer spacingValue={6} />
-                {isLoading
-                    ? <AbsoluteLoader />
-                    : <View style={styles.dailyForecast}>
-                        <View style={styles.currentWeatherContainer}>
-                            <Spacer spacingValue={10} />
-                            <Observer>
-                                {
-                                    () => <Text style={styles.currentTemp}>{getRecalculatedValue(currentWeather.main.feels_like)} {globalStore.unit}</Text>
-                                }
-                            </Observer>
-                        </View>
-                        <View style={{ flex: 1 }}>
-                            {dailyForecastElemenst}
-                        </View>
+
+            <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")} style={styles.burgerMenu}>
+                <Feather name="menu" size={30} color="black" />
+            </TouchableOpacity>
+
+            <Spacer spacingValue={6} />
+            {isLoading
+                ? <AbsoluteLoader />
+                : <View style={styles.dailyForecast}>
+                    <View style={styles.currentWeatherContainer}>
+                        <Spacer spacingValue={10} />
+                        <Observer>
+                            {
+                                () => <Text style={styles.currentTemp}>{currentTemp} {globalStore.unit}</Text>
+                            }
+                        </Observer>
                     </View>
-                }
-            </View>
+                    <View style={{ flex: 1 }}>
+                        {dailyForecastElemenst}
+                    </View>
+                </View>
+            }
+
         </SafeAreaView>
     );
 };
@@ -102,6 +109,7 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: "100%",
         paddingHorizontal: 30,
         backgroundColor: "white",
         alignItems: "center",
@@ -109,8 +117,8 @@ const styles = StyleSheet.create({
     },
     burgerMenu: {
         position: "absolute",
-        marginTop: 20,
-        right: 0,
+        top: 40,
+        right: 20,
     },
     dailyForecast: {
         justifyContent: "center",

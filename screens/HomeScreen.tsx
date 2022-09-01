@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }: HomeScreenScreenRouteProp) {
 
     const backgroudImageSource = getBackgroundImage();
     const isFocused = useIsFocused();
-    const { theme, setTheme } = useTheme();
+    const { theme } = useTheme();
 
     useEffect(() => {
         (async () => {

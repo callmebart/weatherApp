@@ -9,7 +9,7 @@
  - install expoGo App from Google store
  - scan QR code displayed in terminal
  <br/>
-## PreView
+ ### PreView
 <br/>
 <p><img src="https://user-images.githubusercontent.com/62243649/187945552-463473b4-e0e8-4e9c-bf89-bef7317cd583.jpg" width="600" height="1200"></p>
 <p><img src="https://user-images.githubusercontent.com/62243649/187945565-843e95b8-c4da-4514-975d-5573f4b03c1e.jpg" width="600" height="1200"></p>

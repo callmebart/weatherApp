@@ -24,10 +24,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/splash.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.callmebart.taskMobX"
+    },
+    "androidStatusBar": {
+      "translucent": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f4bebf56-ab1d-4e4b-865f-3481a65938b4"
+      }
     }
   }
 }

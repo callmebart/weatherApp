@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spacer should render a View with a style that has a height of 8 times the spacingValue prop 1`] = `
+<View
+  style={
+    Object {
+      "height": 16,
+    }
+  }
+/>
+`;

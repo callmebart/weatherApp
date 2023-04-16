@@ -1,0 +1,472 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoxDetail should render 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "margin": 10,
+          "width": 160,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Object {
+              "flex": undefined,
+            },
+          ]
+        }
+      >
+        <Text
+          animationType="auto"
+          bounce={true}
+          bounceDelay={0}
+          bounceSpeed={50}
+          duration={4000}
+          easing={[Function]}
+          isInteraction={true}
+          loop={true}
+          marqueeDelay={1200}
+          marqueeOnMount={true}
+          numberOfLines={1}
+          scrollSpeed={150}
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontSize": 18,
+                },
+                Object {
+                  "color": "white",
+                },
+              ],
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+          useNativeDriver={true}
+        >
+          Perceived temperature
+        </Text>
+        <RCTScrollView
+          display="flex"
+          horizontal={true}
+          onContentSizeChange={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          scrollEnabled={false}
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          style={
+            Array [
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              false,
+            ]
+          }
+        >
+          <View>
+            <Text
+              animationType="auto"
+              bounce={true}
+              bounceDelay={0}
+              bounceSpeed={50}
+              collapsable={false}
+              duration={4000}
+              easing={[Function]}
+              forwardedRef={[Function]}
+              isInteraction={true}
+              loop={true}
+              marqueeDelay={1200}
+              marqueeOnMount={true}
+              numberOfLines={1}
+              scrollSpeed={150}
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 18,
+                  "transform": Array [
+                    Object {
+                      "translateX": 0,
+                    },
+                  ],
+                  "width": null,
+                }
+              }
+              useNativeDriver={true}
+            >
+              Perceived temperature
+            </Text>
+          </View>
+        </RCTScrollView>
+      </View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        4
+         
+        °C
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "margin": 10,
+          "width": 160,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 18,
+            },
+          ]
+        }
+      >
+        Humidity
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        85
+         %
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "margin": 10,
+          "width": 160,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 18,
+            },
+          ]
+        }
+      >
+        Wind N
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        5.73
+         km/h
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "margin": 10,
+          "width": 160,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Object {
+              "flex": undefined,
+            },
+          ]
+        }
+      >
+        <Text
+          animationType="auto"
+          bounce={true}
+          bounceDelay={0}
+          bounceSpeed={50}
+          duration={4000}
+          easing={[Function]}
+          isInteraction={true}
+          loop={true}
+          marqueeDelay={1200}
+          marqueeOnMount={true}
+          numberOfLines={1}
+          scrollSpeed={150}
+          style={
+            Array [
+              Array [
+                Object {
+                  "color": "white",
+                  "textAlign": "center",
+                },
+                Object {
+                  "fontSize": 18,
+                },
+              ],
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+          useNativeDriver={true}
+        >
+          Probability of precipitation
+        </Text>
+        <RCTScrollView
+          display="flex"
+          horizontal={true}
+          onContentSizeChange={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          scrollEnabled={false}
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          style={
+            Array [
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              false,
+            ]
+          }
+        >
+          <View>
+            <Text
+              animationType="auto"
+              bounce={true}
+              bounceDelay={0}
+              bounceSpeed={50}
+              collapsable={false}
+              duration={4000}
+              easing={[Function]}
+              forwardedRef={[Function]}
+              isInteraction={true}
+              loop={true}
+              marqueeDelay={1200}
+              marqueeOnMount={true}
+              numberOfLines={1}
+              scrollSpeed={150}
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 18,
+                  "textAlign": "center",
+                  "transform": Array [
+                    Object {
+                      "translateX": 0,
+                    },
+                  ],
+                  "width": null,
+                }
+              }
+              useNativeDriver={true}
+            >
+              Probability of precipitation
+            </Text>
+          </View>
+        </RCTScrollView>
+      </View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        0
+         %
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "margin": 10,
+          "width": 160,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 18,
+            },
+          ]
+        }
+      >
+        Pressure
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        1020
+         hPa
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "margin": 10,
+          "width": 160,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 18,
+            },
+          ]
+        }
+      >
+        Cloudiness
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        89
+         %
+      </Text>
+    </View>
+  </View>
+</View>
+`;

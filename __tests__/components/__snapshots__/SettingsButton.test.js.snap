@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsButton should render 1`] = `
+<View
+  style={
+    Object {
+      "width": 281,
+    }
+  }
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "flex-end",
+        "backgroundColor": "rgba(142,177,212,0.3)",
+        "borderRadius": 8,
+        "justifyContent": "center",
+        "marginRight": 50,
+        "opacity": 1,
+        "paddingVertical": 8,
+        "width": 100,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#404142",
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Settings
+    </Text>
+  </View>
+</View>
+`;

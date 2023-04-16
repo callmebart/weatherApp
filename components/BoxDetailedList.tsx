@@ -7,7 +7,6 @@ import { useTheme } from "../hooks/ThemeProvider";
 import { themeMode } from "../utils/themeMode";
 
 export default function BoxDetailedList({ item }: any) {
-
     const unit = getRecalculatedValue(item.main.feels_like);
     const { theme } = useTheme();
     const styles = useStyles(themeMode[theme].color);

@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
     },
     burgerMenu: {
+        zIndex:10,
         position: "absolute",
         top: 40,
         right: 20,

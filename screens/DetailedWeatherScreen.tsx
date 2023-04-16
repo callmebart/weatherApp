@@ -118,6 +118,7 @@ const useStyles = (color: string) => StyleSheet.create({
         color: color,
     },
     pageCloseContainer: {
+        zIndex:10,
         position: "absolute",
         top: 40,
         right: 20,
